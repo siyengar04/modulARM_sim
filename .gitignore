@@ -1,3 +1,5 @@
 venv/
 ompl/
 rmcoauthor.sh
+visualize_kinematics.py
+kinematics_visualization.png

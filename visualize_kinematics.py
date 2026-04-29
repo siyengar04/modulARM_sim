@@ -96,8 +96,8 @@ ax6.set_title("Joint Velocity Profile")
 ax6.grid(True)
 
 plt.tight_layout()
-plt.savefig("kinematics_visualization.png", dpi=150)
-print("\n✓ Visualization saved to kinematics_visualization.png")
+plt.savefig("kinematics_visualization.png")
+print("\saved graphs to kinematics_visualization.png")
 
 plt.show()
 

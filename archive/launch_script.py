@@ -28,10 +28,8 @@ if solved:
     print("Solution found!")
     print("Path:", path)
 
-    # Interpolate to make the path smoother
     path.interpolate()
 
-    # Get states from path
     states = path.getStates()
     path_data = np.array(
         [
@@ -43,10 +41,8 @@ if solved:
     print(f"Path with {len(states)} states:")
     print(path_data)
 
-    # Save path to file
     np.savetxt("path.txt", path_data)
 
-    # Visualize
     if viz:
         for state in path_data:
             print(f"Displaying state: {state}")
@@ -54,7 +50,6 @@ if solved:
 
             time.sleep(0.1)
 
-    # Plot path
     if planner.model.nq == 2:
         plt.figure()
         plt.plot(path_data[:, 0], path_data[:, 1], "r.-")
