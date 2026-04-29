@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<robot name="visual">
+  <link name="world" />
+  <joint name="base_joint" type="fixed">
+    <parent link="world" />
+    <child link="base_link" />
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <material name="blue">
+    <color rgba="0 0 0.8 1" />
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1" />
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1" />
+  </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.202375" />
+      <inertia ixx="2.649040342481711" ixy="0" ixz="0" iyy="2.1725926943344827" iyz="0"
+        izz="1.4967549398138948" />
+    </inertial>
+    <visual>
+      <origin rpy="-1.57075 0 0" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/base_link.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="-1.57075 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/base_link.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="joint_shaft" type="revolute">
+    <parent link="base_link" />
+    <child link="shaft" />
+    <origin xyz="0 -3.8 -0.1" rpy="0 0 0 " />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="shaft">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0106056" />
+      <inertia ixx="0.0009667540031041288" ixy="0" ixz="0" iyy="0.03840272359835456" iyz="0"
+        izz="0.038403118043430114" />
+    </inertial>
+    <visual>
+      <origin rpy="0.0 1.57075 0" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 1.57075 0" xyz="0 -0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+
+  </link>
+  <joint name="shaft_joint" type="fixed">
+    <parent link="shaft" />
+    <child link="clamp" />
+    <origin xyz="0 -3.8 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="clamp">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.17975" />
+      <inertia ixx="1.7407693359722893" ixy="0" ixz="0" iyy="1.929656627638956" iyz="0"
+        izz="0.7173522916666666" />
+    </inertial>
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_link" type="fixed">
+    <parent link="clamp" />
+    <child link="link" />
+    <origin xyz="0 -3.8 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.2565891" />
+      <inertia ixx="0.2064229709124354" ixy="0" ixz="0" iyy="13.467320145246996" iyz="0"
+        izz="13.467134075665442" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 -1.57075" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.57075" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2" type="fixed">
+    <parent link="link" />
+    <child link="clamp2" />
+    <origin xyz="0 -25.5 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="clamp2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.763875" />
+      <inertia ixx="19.565862381636535" ixy="0" ixz="0" iyy="8.202420113932234" iyz="0"
+        izz="15.2146453927043" />
+    </inertial>
+    <visual>
+      <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clamptop.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clamptop.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_shaft2" type="revolute">
+
+    <parent link="clamp2" />
+    <child link="shaft2" />
+    <origin xyz="0 -3.8 0.1" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="shaft2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0106056" />
+      <inertia ixx="0.0009667540031041288" ixy="0" ixz="0" iyy="0.03840272359835456" iyz="0"
+        izz="0.038403118043430114" />
+    </inertial>
+    <visual>
+      <origin rpy="0.0 1.57075 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 1.57075 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="shaft_joint2" type="fixed">
+    <parent link="shaft2" />
+    <child link="clampb2" />
+    <origin xyz="0 -3.8 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="clampb2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.17975" />
+      <inertia ixx="1.7407693359722893" ixy="0" ixz="0" iyy="1.929656627638956" iyz="0"
+        izz="0.7173522916666666" />
+    </inertial>
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_link2" type="fixed">
+    <parent link="clampb2" />
+    <child link="link2" />
+    <origin xyz="0 -3.8 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="link2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.2565891" />
+      <inertia ixx="0.2064229709124354" ixy="0" ixz="0" iyy="13.467320145246996" iyz="0"
+        izz="13.467134075665442" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 -1.57075" xyz="0 0 0" />
+
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.57075" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="jointEE" type="fixed">
+    <parent link="link2" />
+    <child link="clampEE" />
+    <origin xyz="0 -25.5 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+  </joint>
+  <link name="clampEE">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.763875" />
+      <inertia ixx="10.688951235393873" ixy="0" ixz="0" iyy="4.9125119531250006" iyz="0"
+        izz="9.627642407268873" />
+    </inertial>
+    <visual>
+      <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clampEE.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://modularm/description/meshes/clampEE.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <ros2_control name="robot_6_dof" type="system">
+    <hardware>
+      <plugin>
+        <!-- {Name_Space}/{Class_Name}-->
+      </plugin>
+    </hardware>
+    <joint name="joint_shaft">
+      <command_interface name="position">
+        <param name="min">{-pi}</param>
+        <param name="max">{pi}</param>
+      </command_interface>
+      <!-- additional command interfaces ... -->
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <!-- additional state interfaces ... -->
+    </joint>
+    <joint name="joint_shaft2">
+      <command_interface name="position">
+        <param name="min">{-pi}</param>
+        <param name="max">{pi}</param>
+      </command_interface>
+
+      <command_interface name="velocity">
+      </command_interface>
+      <!-- additional command interfaces ... -->
+      <state_interface name="velocity">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <!-- additional state interfaces ... -->
+    </joint>
+    <!-- additional joints ...-->
+    <!-- additional hardware/sensors ...-->
+  </ros2_control>
+</robot>
