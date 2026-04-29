@@ -14,6 +14,7 @@ class Viewer:
             viz = GepettoVisualizer(model, collision_model, visual_model)
             viz.initViewer()
             viz.loadViewerModel("pinocchio")
+
             return viz
         except ImportError as err:
             print(

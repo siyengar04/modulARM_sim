@@ -15,11 +15,13 @@ mesh_dir = join(dirname(abspath(__file__)), "robot/meshes")
 model, collision_model, visual_model = pin.buildModelsFromUrdf(
     urdf_model_path, mesh_dir
 )
+subprocess.Popen(["pkill", "gepetto-gui"])
+time.sleep(1)
 subprocess.Popen(["gepetto-gui"])
 viz = GepettoVisualizer(model, collision_model, visual_model)
+time.sleep(1)
 viz.initViewer()
-viz.loadViewerModel("pinocchio")
-
+viz.display(pin.neutral(model))
 data = model.createData()
 
 planner = modulARMPlanner()
@@ -92,7 +94,9 @@ if solved:
 
     print(f"initial: {start_config}")
     print(f"goal:  {goal_config}")
-    printf("goal EE pos:" {})
+    print(
+        f"goal EE pos: {30*np.cos(goal_config[0]) + 30*np.sin(goal_config[1])}, {30*np.sin(goal_config[0]) - 30*np.cos(goal_config[1]) + 30}, 0.0"
+    )
     print(f"\ninitial EE position: {start_ee}")
     print(f"final EE position:   {end_ee}")
     print(f"EE displacement: {np.linalg.norm(end_ee - start_ee):.4f}")
