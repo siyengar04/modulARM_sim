@@ -1,50 +1,52 @@
 from ompl import base as ob
 from ompl import geometric as og
+import pinocchio as pin
 import numpy as np
-import pinocchio
-
-URDF_PATH = "./robot/robot_description.urdf"
 
 
-class modulARMPlanner:
-    def __init__(self):
-        self.model, self.collision_model, self.visual_model = (
-            pinocchio.buildModelsFromUrdf(URDF_PATH, "robot/meshes")
-        )
+class RobotMotionPlanner:
+    def __init__(self, urdf_path):
+        # Load robot model
+        self.model = pin.buildModelFromUrdf(urdf_path)
         self.data = self.model.createData()
 
+        # Create state space matching robot DOF
         self.space = ob.RealVectorStateSpace(self.model.nq)
 
+        # Set joint limits
         bounds = ob.RealVectorBounds(self.model.nq)
         for i in range(self.model.nq):
             bounds.setLow(i, self.model.lowerPositionLimit[i])
             bounds.setHigh(i, self.model.upperPositionLimit[i])
         self.space.setBounds(bounds)
 
+        # Create space information
         self.si = ob.SpaceInformation(self.space)
         self.si.setStateValidityChecker(self.isStateValid)
 
     def isStateValid(self, state):
+        # Convert OMPL state to configuration
         q = np.array([state[i] for i in range(self.model.nq)])
-        pinocchio.forwardKinematics(self.model, self.data, q)
-        # add collision checking (pin?)
-        return True
+
+        # Check for collisions or other constraints
+        pin.forwardKinematics(self.model, self.data, q)
+
+        # Add your collision checking here
+        return True  # Valid if no collisions
 
     def plan(self, start_config, goal_config, time_limit=1.0):
         pdef = ob.ProblemDefinition(self.si)
 
-        # Allocate states from the space
-        start = self.space.allocState()
-        goal = self.space.allocState()
-
-        # Set state values
+        # Set start and goal
+        start = ob.State(self.space)
+        goal = ob.State(self.space)
         for i in range(self.model.nq):
             start[i] = start_config[i]
             goal[i] = goal_config[i]
 
         pdef.setStartAndGoalStates(start, goal)
 
-        # start RRT
+        # Use planner
         planner = og.RRTConnect(self.si)
         planner.setProblemDefinition(pdef)
         planner.setup()
@@ -53,5 +55,6 @@ class modulARMPlanner:
         return solved, pdef.getSolutionPath() if solved else None
 
 
-if __name__ == "__main__":
-    planner = modulARMPlanner()
+# Usage
+planner = RobotMotionPlanner("robot_description.urdf")
+solved, path = planner.plan(start_config, goal_config)

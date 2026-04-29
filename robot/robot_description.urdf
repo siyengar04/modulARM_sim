@@ -28,13 +28,13 @@
       <origin rpy="-1.57075 0 0" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/base_link.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/base_link.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="-1.57075 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/base_link.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/base_link.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
 
@@ -45,7 +45,7 @@
     <child link="shaft" />
     <origin xyz="0 -3.8 -0.1" rpy="0 0 0 " />
     <axis xyz="0 0 1" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="shaft">
     <inertial>
@@ -58,13 +58,13 @@
       <origin rpy="0.0 1.57075 0" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/shaft.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="0.0 1.57075 0" xyz="0 -0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/shaft.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
 
@@ -74,7 +74,7 @@
     <child link="clamp" />
     <origin xyz="0 -3.8 0" rpy="0 0 0" />
     <axis xyz="0 0 1" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="clamp">
     <inertial>
@@ -87,13 +87,13 @@
       <origin rpy="1.57075 0 0" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clamp.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.57075 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clamp.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
@@ -102,7 +102,7 @@
     <child link="link" />
     <origin xyz="0 -3.8 0" rpy="0 0 0" />
     <axis xyz="1 0 0" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="link">
     <inertial>
@@ -115,13 +115,13 @@
       <origin rpy="0 0 -1.57075" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/link.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 -1.57075" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/link.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
@@ -130,7 +130,7 @@
     <child link="clamp2" />
     <origin xyz="0 -25.5 0" rpy="0 0 0" />
     <axis xyz="1 0 0" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="clamp2">
     <inertial>
@@ -143,13 +143,13 @@
       <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clamptop.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clamptop.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clamptop.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clamptop.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
@@ -159,7 +159,7 @@
     <child link="shaft2" />
     <origin xyz="0 -3.8 0.1" rpy="0 0 0" />
     <axis xyz="0 0 1" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="shaft2">
     <inertial>
@@ -171,13 +171,13 @@
     <visual>
       <origin rpy="0.0 1.57075 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/shaft.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="0.0 1.57075 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/shaft.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/shaft.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
@@ -188,7 +188,7 @@
     <child link="clampb2" />
     <origin xyz="0 -3.8 0" rpy="0 0 0" />
     <axis xyz="0 0 1" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="clampb2">
     <inertial>
@@ -201,13 +201,13 @@
       <origin rpy="1.57075 0 0" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clamp.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.57075 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clamp.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clamp.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
@@ -216,7 +216,7 @@
     <child link="link2" />
     <origin xyz="0 -3.8 0" rpy="0 0 0" />
     <axis xyz="1 0 0" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="link2">
     <inertial>
@@ -229,13 +229,13 @@
       <origin rpy="0 0 -1.57075" xyz="0 0 0" />
 
       <geometry>
-        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/link.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 -1.57075" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/link.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/link.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
@@ -244,7 +244,7 @@
     <child link="clampEE" />
     <origin xyz="0 -25.5 0" rpy="0 0 0" />
     <axis xyz="1 0 0" />
-    <limit lower="-1.0" upper="1.0" effort="100" velocity="100" />
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100" />
   </joint>
   <link name="clampEE">
     <inertial>
@@ -256,13 +256,13 @@
     <visual>
       <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clampEE.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clampEE.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.57075 -3.1415 -3.1415" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://modularm/description/meshes/clampEE.stl" scale="0.1 0.1 0.1" />
+        <mesh filename="file:///home/samee/modulARM_sim/robot/clampEE.stl" scale="0.1 0.1 0.1" />
       </geometry>
     </collision>
   </link>
