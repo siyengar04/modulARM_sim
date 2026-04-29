@@ -3,33 +3,47 @@ from pinocchio.visualize import GepettoVisualizer
 import sys
 import pinocchio as pin
 from os.path import dirname, join, abspath
+import time
+
+# import simulate_motion #cirular, don't use
+
+urdf_path = "./robot/robot_description.urdf"
+mesh_dir = "./robot/meshes"
+model, collision_model, visual_model = pin.buildModelsFromUrdf(urdf_path, mesh_dir)
+subprocess.Popen(["pkill", "-f", "gepetto-gui"])
+time.sleep(1)
+
+
+viz = GepettoVisualizer(model, collision_model, visual_model)
 
 
 class Viewer:
-    @staticmethod
-    def launchViewer(model, collision_model, visual_model):
+    # from functions from Pinocchio documentation
+    # @staticmethod
+    def launchViewer():
+        subprocess.Popen(["gepetto-gui"])
+        time.sleep(5)
         """Launch Gepetto visualizer and return visualizer object"""
         try:
-            subprocess.Popen(["gepetto-gui"])
-            viz = GepettoVisualizer(model, collision_model, visual_model)
             viz.initViewer()
-            viz.loadViewerModel("pinocchio")
+            # viz.loadViewerModel("pinocchio")
 
-            return viz
         except ImportError as err:
             print(
                 "Error while initializing the viewer. It seems you should install gepetto-viewer"
             )
             print(err)
-            return None
+            sys.exit(0)
+        try:
+            viz.loadViewerModel("pinocchio")
         except AttributeError as err:
             print(
                 "Error while loading the viewer model. It seems you should start gepetto-viewer"
             )
             print(err)
-            return None
+            sys.exit(0)
 
-    @staticmethod
+    # @staticmethod
     def displayMotion(viz, path_data, dt=0.05):
         """Display motion plan in visualizer
 
@@ -52,3 +66,7 @@ class Viewer:
             except Exception as e:
                 print(f"Error displaying frame {i}: {e}")
                 break
+
+
+if __name__ == "__main__":
+    Viewer.launchViewer()
