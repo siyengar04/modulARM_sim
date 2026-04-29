@@ -4,24 +4,29 @@ import numpy as np
 import pinocchio as pin
 from os.path import dirname, join, abspath
 import time
-from launch_viewer import Viewer
+from archive.launch_viewer import Viewer
+import archive.launch_viewer as launch_viewer
 from pinocchio.visualize import GepettoVisualizer
 
 tDelayS = 0.05
 
-urdf_model_path = join(dirname(abspath(__file__)), "robot/robot_description.urdf")
-mesh_dir = join(dirname(abspath(__file__)), "robot/meshes")
+
+urdf_model_path = "./robot/robot_description.urdf"
+mesh_dir = "./robot/meshes"
 
 model, collision_model, visual_model = pin.buildModelsFromUrdf(
     urdf_model_path, mesh_dir
 )
+
+viz = launch_viewer.viz
 subprocess.Popen(["pkill", "gepetto-gui"])
 time.sleep(1)
-subprocess.Popen(["gepetto-gui"])
-viz = GepettoVisualizer(model, collision_model, visual_model)
-time.sleep(1)
-viz.initViewer()
-viz.display(pin.neutral(model))
+# subprocess.Popen(["gepetto-gui"])
+# viz = GepettoVisualizer(model, collision_model, visual_model)
+# print("sleeping 5 to allow Gepetto to load")
+# time.sleep(5)
+Viewer.launchViewer()
+# viz.display(pin.neutral(model))
 data = model.createData()
 
 planner = modulARMPlanner()
@@ -95,7 +100,8 @@ if solved:
     print(f"initial: {start_config}")
     print(f"goal:  {goal_config}")
     print(
-        f"goal EE pos: {30*np.cos(goal_config[0]) + 30*np.sin(goal_config[1])}, {30*np.sin(goal_config[0]) - 30*np.cos(goal_config[1]) + 30}, 0.0"
+        # WIP: find simple IK for arm
+        f"goal EE pos: {30*np.sin(goal_config[0]) + 30*np.cos(goal_config[1])}, {-30*np.sin(goal_config[0]) + 30*np.cos(goal_config[1])}, 0.0"
     )
     print(f"\ninitial EE position: {start_ee}")
     print(f"final EE position:   {end_ee}")

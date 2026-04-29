@@ -1,10 +1,10 @@
-from launch_viewer import Viewer
+from archive.launch_viewer import Viewer
 import numpy as np
 import time
 import pinocchio as pin
 from os.path import dirname, join, abspath
 import subprocess
-import launch_viewer
+import archive.launch_viewer as launch_viewer
 
 urdf_path = "./robot/robot_description.urdf"
 mesh_dir = "./robot/meshes"
