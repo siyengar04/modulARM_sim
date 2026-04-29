@@ -92,6 +92,7 @@ if solved:
 
     print(f"initial: {start_config}")
     print(f"goal:  {goal_config}")
+    printf("goal EE pos:" {})
     print(f"\ninitial EE position: {start_ee}")
     print(f"final EE position:   {end_ee}")
     print(f"EE displacement: {np.linalg.norm(end_ee - start_ee):.4f}")
